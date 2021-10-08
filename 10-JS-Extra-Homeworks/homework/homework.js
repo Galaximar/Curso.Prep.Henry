@@ -10,6 +10,11 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+  let arr=[];
+  for (const key in objeto) {
+    arr.push([key,objeto[key]])
+  }
+  return arr;
 }
 
 
@@ -18,6 +23,11 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  obj={};
+  string.split("").forEach(x => {
+    obj[x]===undefined?obj[x]=1:obj[x]+=1;
+  });
+  return obj;
 }
 
 
@@ -26,6 +36,7 @@ function capToFront(s) {
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
+  return s.split("").filter(x=>x===x.toUpperCase()).concat(s.split("").filter(x=>x===x.toLowerCase())).join("");
 }
 
 
@@ -35,6 +46,13 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
+  let count=0;
+  let arr=str.split(" ")
+  arr.forEach(x=>{
+    arr[count]=x.split("").reverse().join("")
+    count++;
+  })
+  return arr.join(" ");
 } 
 
 
@@ -43,6 +61,7 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+  return numero.toString().split("").reverse().join("")===numero.toString()?"Es capicua":"No es capicua";
 }
 
 
@@ -50,6 +69,7 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
+  return cadena.split("").filter(x=>x!=="a"&&x!=="b"&&x!=="c").join("");
 }
 
 
@@ -57,6 +77,7 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+  return arr.sort((a,b)=>a.length-b.length);
 }
 
 
@@ -65,7 +86,13 @@ function buscoInterseccion(arreglo1, arreglo2){
   //retornar un nuevo array con la intersección de ambos elementos. (Ej: [4,2,3] unión [1,3,4] = [3,4].
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
-  //Escribe tu código aquí  
+  //Escribe tu código aquí
+  obj1={};
+  obj2={};
+  let arr=[];
+  arreglo1.forEach(x=>obj1[x]===undefined?obj1[x]=1:obj1[x]+=1)
+  arreglo2.forEach(x=>obj1[x]!==undefined?arr.push(x):"")
+  return arr;
 }
 
 
